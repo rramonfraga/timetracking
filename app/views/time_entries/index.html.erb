@@ -1,0 +1,14 @@
+<h1> <%= @project.name %></h1>
+
+<ul>
+  <% @time_entries.each do |entry| %>
+    <li>
+      <%= entry.hours %> h
+      <%= entry.minutes %> m -
+      <%= entry.date %>
+      <%= link_to 'Edit', project_time_entry_edit_path(@project, entry)%>
+      <%= link_to('Delete', project_time_entry_path(@project, entry),
+        method: :delete, data: { confirm: "Are you sure?" }) %>
+    </li>
+  <% end %>
+</ul>  

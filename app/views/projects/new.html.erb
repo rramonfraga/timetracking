@@ -1,0 +1,11 @@
+<h1> Add a new proyect </h1>
+<%= flash[:error] %>
+<%= form_for @project do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.button %>
+<% end %>
