@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :people
   get '/', to: "site#home"
 
   resources :projects, only: [:index, :show, :new, :create] do
