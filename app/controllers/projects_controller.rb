@@ -1,7 +1,6 @@
 class ProjectsController < ApplicationController
   def index
-    @projects = Project.order(created_at: :asc)
-                       .limit(10)
+    @projects = Project.get_first_created(10)
     render 'index'
   end
 
@@ -26,6 +25,12 @@ class ProjectsController < ApplicationController
       flash[:error] = @project.errors.message
       render 'new'
     end
+  end
+
+  def finish
+    @project = Project.new(project_params)
+    @project.finish!
+    redirect_to
   end
 
   private

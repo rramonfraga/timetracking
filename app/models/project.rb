@@ -9,10 +9,18 @@ class Project < ApplicationRecord
 
   validates :name, :description, presence: true
 
+  def finish!
+    
+  end
+
   class << self
     def clean_old
       projects = where('created_at < ?', last_week)
       projects.destroy_all
+    end
+
+    def get_first_created(limit)
+      order(created_at: :asc).limit(limit)
     end
 
     private
